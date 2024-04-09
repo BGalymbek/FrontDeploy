@@ -27,18 +27,18 @@ const submitSeatPlace = async () =>{
         console.log("Не все данные выбраны! Пожалуйста попробуйте снова");
     }else{
         try{
-            // const response =await axios.post('bookings/', 
-            // {
-            //     block, room_number, seat_number, semester_duration 
-            // },
-            // {
-            //     headers: {
-            //         'Authorization': `Bearer ${authTokens.access}`,
-            //     }
-            // } )
+            const response =await axios.post('bookings/', 
+            {
+                block, room_number, seat_number, semester_duration 
+            },
+            {
+                headers: {
+                    'Authorization': `Bearer ${authTokens.access}`,
+                }
+            } )
 
-            // const res =  response.data;
-            // console.log(res);
+            const res =  response.data;
+            console.log(res);
 
             // Ждем 3 секунды перед выполнением следующего запроса
             setTimeout(async () => {
