@@ -58,9 +58,7 @@ export default function DocumentSubmission() {
                                 <li>3x4 photo</li>
                                 <li>075 form</li>
                                 <li>identity card(copy)</li>
-                                <li>letter of attorney</li>
-                                <li>address certificate</li>
-                                <li>university admission form</li>
+                                <li>statement</li>
                             </ul>
                         </div> 
                         <p>If you need an instructional video, click here</p> 
@@ -70,27 +68,56 @@ export default function DocumentSubmission() {
                     <div>
                         <h2>Upload</h2>
                         <form onSubmit={submit}>
-                            <input
-                             type="file" id="statement" name="statement"
-                             onChange={e => setStatement(e.target.files[0])}
-                             required
-                             />
-                            <input 
-                             type="file" id="photo_3x4" name="photo_3x4"
-                             onChange={e => setPhoto(e.target.files[0])}
-                             required
-                            />
-                            <input 
-                             type="file" id="form_075" name="form_075"
-                             onChange={e => setForm(e.target.files[0])}
-                             required
-                            />
-                            <input 
-                             type="file" id="identity_card_copy" name="identity_card_copy"
-                             onChange={e => setCardCopy(e.target.files[0])}
-                             required
-                             />
-                            <button>Submit</button>
+                            <div className='submission-item'>
+                                <label>Upload your 3x4 photo here</label>
+                                <div className='custom-file-input'>
+                                    <input 
+                                    type="file" id="photo_3x4" name="photo_3x4"
+                                    onChange={e => setPhoto(e.target.files[0])}
+                                    required
+                                    placeholder='Upload File'
+                                    />
+                                    <img src={require('../img/round-upload.png')} alt="logo"/>
+                                    <p>{photo_3x4? photo_3x4.name : "Upload File"}</p>
+                                </div>
+                            </div>
+                            <div className='submission-item'>
+                                <label>Upload your 075form document here</label>
+                                <div className='custom-file-input'>
+                                    <input 
+                                    type="file" id="form_075" name="form_075"
+                                    onChange={e => setForm(e.target.files[0])}
+                                    required
+                                    />
+                                    <img src={require('../img/round-upload.png')} alt="logo"/>
+                                    <p>{form_075? form_075.name : "Upload File"}</p>
+                                </div>
+                            </div>
+                            <div className='submission-item'>
+                                <label>Upload your identity card(copy) here</label> 
+                                <div className='custom-file-input'>
+                                    <input 
+                                    type="file" id="identity_card_copy" name="identity_card_copy"
+                                    onChange={e => setCardCopy(e.target.files[0])}
+                                    required
+                                    /> 
+                                    <img src={require('../img/round-upload.png')} alt="logo"/>
+                                    <p>{identity_card_copy? identity_card_copy.name : "Upload File"}</p>
+                                </div>
+                            </div>
+                            <div className='submission-item'>
+                                <label>Upload your statement here</label>
+                                <div className='custom-file-input'>
+                                    <input
+                                    type="file" id="statement" name="statement"
+                                    onChange={e => setStatement(e.target.files[0])}
+                                    required
+                                    />
+                                    <img src={require('../img/round-upload.png')} alt="logo"/>
+                                    <p>{statement? statement.name : "Upload File"}</p>
+                                </div>
+                            </div>
+                            <button className='btn-submit-docs'>Submit</button>
                         </form>
                     </div>
                 </div>

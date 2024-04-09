@@ -15,17 +15,24 @@ export default function Register() {
   const [password, setPassword] = useState('')
   const [password_confirm, setConfirmPassword] = useState('')
   const [redirect, setRedirect] = useState(false)
+  const [errorRegister, setErrorRegister] = useState('')
 
   const submit = async (e) =>{
     e.preventDefault();
     
-     await axios.post('register/', {
+     const response = await axios.post('register/', {
         first_name, last_name, id_number, specialty, faculty, birth_date, gender, email, password, password_confirm
     });
 
-    // const content = await response.json();
+    console.log(response.response.data.email);
+    console.log(response);
 
-    setRedirect(true);
+    if(response.response.status == 200){
+      setRedirect(true);
+      setErrorRegister('')
+    }else{
+      setErrorRegister(response.response.data.email)
+    }
   }
 
   if(redirect){
@@ -72,6 +79,7 @@ export default function Register() {
                       type="email" placeholder="Email" id="email"
                       onChange={e => setEmail(e.target.value)}
                       required
+                      style={{ border: errorRegister ? '1.6px solid #E94949' : ''}}
                       />
                     </div>
                     <div className="field-component field-signup">
@@ -125,6 +133,7 @@ export default function Register() {
                       required
                       />
                     </div>
+                    <p className='error-register'>{errorRegister ? errorRegister : ''}</p>
                     <div class="additional">
                         <div class="remember-chkbx">
                             <input type="checkbox" name="remember" id="remember"/>

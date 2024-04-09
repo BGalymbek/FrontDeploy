@@ -7,7 +7,8 @@ import AuthContext from '../context/AuthContext';
 
 const Login = ()=> {
 
-  let {loginUser} = useContext(AuthContext)
+  let {loginUser, errorLogin} = useContext(AuthContext)
+  const error = localStorage.getItem('error')
 
   //Если пользователь авторизовался то кидать на MainPage
   return (
@@ -36,16 +37,16 @@ const Login = ()=> {
                         placeholder="Enter the email" 
                         />
                       </div>
-                      <div className="field-component">
+                      <div className="field-component field-login">
                         <label htmlFor="password">Password</label>
                         <input 
                         type="password" 
                         id="password"
-                        // onChange={e => setPassword(e.target.value)}
-                        // value={password}
                         required
                         placeholder="Enter the password" 
+                        style={{ outlineColor: errorLogin ? '#E94949' : ''}}
                         />
+                        <p className='errorLogin'>{errorLogin ? errorLogin: ''}</p>
                       </div>
                       <div className="additional">
                          <div className="remember-chkbx">
