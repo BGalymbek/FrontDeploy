@@ -16,23 +16,30 @@ export default function Register() {
   const [password_confirm, setConfirmPassword] = useState('')
   const [redirect, setRedirect] = useState(false)
   const [errorRegister, setErrorRegister] = useState('')
+  const [successfullyRegister, setSuccessfullyRegister] = useState('')
 
   const submit = async (e) =>{
     e.preventDefault();
     
-     const response = await axios.post('register/', {
+     try{
+      const response = await axios.post('register/', {
         first_name, last_name, id_number, specialty, faculty, birth_date, gender, email, password, password_confirm
-    });
+      });
 
-    console.log(response.response.data.email);
-    console.log(response);
+      // console.log(response.response.data.email);
+      console.log(response);
 
-    if(response.response.status == 200){
-      setRedirect(true);
-      setErrorRegister('')
-    }else{
-      setErrorRegister(response.response.data.email)
-    }
+      if(response.status == 201){
+        setTimeout(()=> setRedirect(true),10000);
+        setErrorRegister('')
+        setSuccessfullyRegister('You registered succesfully! Please check your email')
+      }else{
+        setErrorRegister(response.response.data.email)
+        setSuccessfullyRegister('')
+      }
+     }catch(err){
+        console.error("Ошибка: ", err);
+     }
   }
 
   if(redirect){
@@ -133,7 +140,7 @@ export default function Register() {
                       required
                       />
                     </div>
-                    <p className='error-register'>{errorRegister ? errorRegister : ''}</p>
+                    <p className='error-register' style={{ color: successfullyRegister? '#00A35D':''}}>{successfullyRegister ? successfullyRegister : errorRegister}</p>
                     <div class="additional">
                         <div class="remember-chkbx">
                             <input type="checkbox" name="remember" id="remember"/>

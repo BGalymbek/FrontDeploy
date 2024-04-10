@@ -1,11 +1,13 @@
 import React, { useContext, useEffect,useState } from 'react'
 import AuthContext from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 export default function Navbar({selectedBlock}) {
   const { authTokens, logoutUser } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [isStaff, setStaff] = useState("");
+  const navigate = useNavigate();
 
   const isDisabled = selectedBlock !== null;
   let menu = document.getElementById('burger-menu')
@@ -21,6 +23,23 @@ export default function Navbar({selectedBlock}) {
   const changeBurgerMenu = ()=>{
        menu.classList.toggle('open-menu')
   }
+    
+  const handleClickBookNow = async ()=> {
+      const response = await axios.get('documents/get/', {
+          headers: {
+              'Authorization': `Bearer ${authTokens.access}`,
+          }
+        });
+
+      const userDocVerified = response.data[0].is_verified
+      console.log(userDocVerified);
+
+      if(authTokens.user.is_doc_submitted == true && userDocVerified == true){
+          navigate('/booking')    
+      }else{
+          navigate('/oops');
+      }
+  }
 
   return (
     <nav className="nav">
@@ -32,7 +51,7 @@ export default function Navbar({selectedBlock}) {
               <ul className="navbar-items">
                   <li><a href="/main-page" disabled={isDisabled}>Home Page</a></li>
                   <li><a href="">Rooms</a></li>
-                  <li><a href="/booking" disabled={isDisabled}>Booking</a></li>
+                  <li><a onClick={()=>handleClickBookNow()}>Booking</a></li>
                   <li><a href="">News</a></li>
                   <li><a href="">About Us</a></li>
                   <li className="nav-icons">

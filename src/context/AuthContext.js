@@ -59,6 +59,7 @@ export const AuthProvider = ({children}) => {
         loginUser:loginUser,
         logoutUser:logoutUser,
         errorLogin: errorLogin,
+        setErrorLogin:setErrorLogin,
     }
 
     return(

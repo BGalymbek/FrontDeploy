@@ -1400,3 +1400,88 @@ src: url("./fonts/SF-Pro-Display-Medium.otf");
   cursor: pointer;
   float: right;
 }
+
+/*  */
+
+.oops{
+  background-color: #EAFAFF;
+  min-height: 100vh;
+}
+
+.oops-container{
+  width: 35%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.oops-content{
+  margin-bottom: 25px;
+}
+
+.oops-img{
+  width: 80%;
+}
+
+.oops-img img{
+  width: 100%;
+}
+
+.oops-title{
+  font-family: 'SF Pro Display';
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 57.28px;
+  text-align: center;
+  color: #E94949;
+  margin-bottom: 25px;
+}
+
+.oops-message{
+  font-family: 'SF Pro Display medium';
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27.63px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #212153B2;
+} 
+
+.oops-link{
+  font-family: 'SF Pro Display medium';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.09px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #21215399;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.oops-link:hover{
+  color: #bac34e;
+}
+
+/* doc- submitted */
+
+.doc-submitted-container{
+  width: 35%;
+  margin-top: 90px;
+}
+
+.doc-submitted-img{
+  width: 45%;
+}
+
+.doc-submitted-img img{
+  width: 100%;
+}
+
+.doc-submitted-title{
+  color: #173F8F;
+}

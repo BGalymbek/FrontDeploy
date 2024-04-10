@@ -7,8 +7,7 @@ import AuthContext from '../context/AuthContext';
 
 const Login = ()=> {
 
-  let {loginUser, errorLogin} = useContext(AuthContext)
-  const error = localStorage.getItem('error')
+  let {loginUser, errorLogin, setErrorLogin} = useContext(AuthContext)
 
   //Если пользователь авторизовался то кидать на MainPage
   return (
@@ -64,7 +63,7 @@ const Login = ()=> {
                       <button className="btn">Sign in</button>
                     </form>
                 </div>
-                <h4>If you don't have an account? <Link to ='/register'>Click here</Link></h4>
+                <h4>If you don't have an account? <Link to ='/register' onClick={()=>setErrorLogin('')}>Click here</Link></h4>
             </div>
         </div>
         <div className="welcome">

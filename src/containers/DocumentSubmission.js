@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import AuthContext from '../context/AuthContext'
 import { useContext } from 'react'
+import {useNavigate} from 'react-router-dom'
 
 export default function DocumentSubmission() {
     const {authTokens} = useContext(AuthContext);
@@ -13,6 +14,7 @@ export default function DocumentSubmission() {
   const [form_075, setForm] = useState('')
   const [identity_card_copy, setCardCopy] = useState('')
   const [redirect, setRedirect] = useState(false)
+  const navigate = useNavigate('')
     
     const submit = async(e) =>{
         e.preventDefault();
@@ -36,7 +38,7 @@ export default function DocumentSubmission() {
 
                 // Обработка успешного ответа
                 console.log(response.data);
-                alert('Файлы успешно загружены');
+                navigate('/doc-submitted')
             }catch(err){
                 console.error('You have problems: ' + err)
             }

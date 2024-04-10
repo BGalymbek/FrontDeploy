@@ -34,6 +34,7 @@
     text-decoration: none;
     color: #FFFFFF99;
     transition: .2s;
+    cursor: pointer;
 }
 
 .navbar-items>li a:hover{
