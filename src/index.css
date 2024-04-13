@@ -103,7 +103,7 @@ src: url("./fonts/SF-Pro-Display-Medium.otf");
   margin-bottom: 15px;
 }
 
-.field-component input{
+.field-component input, #speciality-select, #faculty-select, #gender-select{
   font-family: "SF Pro Display medium";
   padding: 14px;
   border-radius: 8px;
@@ -304,8 +304,21 @@ src: url("./fonts/SF-Pro-Display-Medium.otf");
   margin-bottom: 20px;
 }
 
-.field-signup input{
+.field-signup input, #speciality-select, #faculty-select, #gender-select{
   padding: 7px;
+}
+
+#speciality-select, #faculty-select, #gender-select{
+  border: 1.6px solid rgba(0, 0, 0, .3);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('./img/arrow-bottom.png') no-repeat right 12px center;
+  background-size: 17px 17px;
+}
+
+#speciality-select option, #faculty-select option, #gender-select option{
+  color: #000;
 }
 
 .title-content-up h2{
