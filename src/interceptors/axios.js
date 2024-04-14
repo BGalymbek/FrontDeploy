@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://sdudorm-6a4f40c20ef7.herokuapp.com/api'
+axios.defaults.baseURL = 'http://localhost:8000/api'
 
 axios.interceptors.response.use(resp=> resp, async error => {
     if(error.response.status === 401){

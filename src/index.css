@@ -621,7 +621,7 @@ src: url("./fonts/SF-Pro-Display-Medium.otf");
 .btn-group{
   gap: 26px;
   margin-bottom: 16px;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .block{

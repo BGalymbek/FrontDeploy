@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
     let loginUser = async (e)=> {
         e.preventDefault()
         try{
-            let response = await fetch('https://sdudorm-6a4f40c20ef7.herokuapp.com/api/login/', {
+            let response = await fetch('http://localhost:8000/api/login/', {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

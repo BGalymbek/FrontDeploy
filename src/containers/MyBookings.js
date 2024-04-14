@@ -6,6 +6,7 @@ import AuthContext from '../context/AuthContext';
 export default function MyBookings() {
     const {authTokens} =useContext(AuthContext)
     const [userBooking, setUserBooking] = useState('')
+    const [corridorNum, setCorridorNum] = useState('')
     const room = userBooking.room_number
     const floor= Math.round(room/100)
 
@@ -30,15 +31,30 @@ export default function MyBookings() {
 
         fetchData(); // Вызов функции для выполнения запроса при загрузке компонента
     }, []);
+       
 
-    const recognizeCorridorNum = ()=>{
-        let num = room%100;
-    }
+    useEffect(() => {
+        const recognizeCorridorNum = (room)=>{
+            if (room) {
+                let num = room % 100;
+                console.log("num: " + num);
+                
+                if(num>=12 && num<=16){
+                 setCorridorNum(2)
+                }else if(num>=22 && num<=26){
+                     setCorridorNum(3)
+                }else if(num>=34 && num<=38){
+                     setCorridorNum(4) 
+                }else{
 
-    // let num = room%100;
-    // if(){
+                    setCorridorNum(1)
+                }
+            }
+        }
+        recognizeCorridorNum(room);
+    }, [room]); 
 
-    // }
+    console.log(userBooking);
   return (
     <div className='my-booking'>
         <Navbar/>
@@ -59,7 +75,7 @@ export default function MyBookings() {
                     <tr>
                         <td>{userBooking.block}-Block</td>
                         <td>{floor}- floor</td>
-                        <td></td>
+                        <td>{corridorNum}- corridor</td>
                         <td>{room}-room</td>
                         <td>{userBooking.seat_number}-seat</td>
                     </tr>
