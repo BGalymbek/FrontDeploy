@@ -60,24 +60,6 @@ export default function MainPage() {
                 const res = getResponse.data
                 setUserBookedEarlier(res)
                 console.log("Пользователь забронировал: ", res);
-                // Ждем 3 секунды перед выполнением следующего запроса
-            setTimeout(async () => {
-                try {
-                    // Выполняем GET запрос с задержкой 3 секунды
-                    const getResponse = await axios.get('profile/', {
-                        headers: {
-                            'Authorization': `Bearer ${authTokens.access}`,
-                        }
-                    });
-
-                    const res = getResponse.data
-                    setUserProfile(res)
-
-                    console.log("Данные профиля: ", res);
-                } catch (error) {
-                    console.error("Ошибка при выполнении GET запроса:", error);
-                }
-            }, 2000);
             } catch (error) {
                 // Обработка ошибок
                 console.error('Error fetching data:', error);
@@ -87,8 +69,29 @@ export default function MainPage() {
         fetchData(); // Вызов функции для выполнения запроса при загрузке компонента
     }, []);
 
+    useEffect(() => {
+        const fetchProfile = async ()=> {
+            try {
+                // Выполняем GET запрос с задержкой 3 секунды
+                const getResponse = await axios.get('profile/', {
+                    headers: {
+                        'Authorization': `Bearer ${authTokens.access}`,
+                    }
+                });
+    
+                const res = getResponse.data
+                setUserProfile(res)
+    
+                console.log("Данные профиля: ", res);
+            } catch (error) {
+                console.error("Ошибка при выполнении GET запроса:", error);
+            }
+        }
+        fetchProfile();
+    }, []);
+
   return (
-    <>
+    <div className='main-page'>
         <Navbar/>
         <section className="wrapper header">
             <header>
@@ -101,7 +104,13 @@ export default function MainPage() {
                         ):(
                            <button className="btn-book" onClick={()=>navigate('/my-booking')}>My Bookings</button>
                         )}
-                        <Link to="/document-submission"><button className="btn-submission">Document Submission</button></Link>
+
+                        {userProfile.is_doc_submitted == true ? (
+                           <button className="btn-submission" onClick={()=>navigate('/update-submission')}>Update Submission</button>
+                        ):(
+                           <button className="btn-submission" onClick={()=>navigate('/document-submission')}>Document Submission</button>
+                        )}
+                        {/* <Link to="/document-submission"><button className="btn-submission">Document Submission</button></Link> */}
                     </div>
                 </div>
                 <div className="dorm-img">
@@ -116,7 +125,7 @@ export default function MainPage() {
             </div>
             <button className="learn-more"></button>
         </section> */}
-  </>
+  </div>
 
   )
 }

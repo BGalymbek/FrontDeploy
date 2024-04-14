@@ -18,6 +18,7 @@ import PaymentBooking from "./containers/PaymentBooking";
 import Oops from "./containers/ResponsePages/Oops";
 import MyBookings from "./containers/MyBookings";
 import DocSumbitted from "./containers/ResponsePages/DocSumbitted";
+import UpdateSubmission from "./containers/UpdateSubmission";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
                 <Route exact path="/oops" element={<Oops/>}/>
                 <Route exact path="/my-booking" element={<MyBookings/>}/>
                 <Route exact path="/doc-submitted" element={<DocSumbitted/>}/>
+                <Route exact path="/update-submission" element={<UpdateSubmission/>}/>
                 <Route
                   path="/main-page"
                   element={
