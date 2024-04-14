@@ -7,6 +7,7 @@ export default function Navbar({selectedBlock}) {
   const { authTokens, logoutUser } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [isStaff, setStaff] = useState("");
+  const [bookingIsHas, setBookingIsHas] = useState("");
   const navigate = useNavigate();
 
   const isDisabled = selectedBlock !== null;
@@ -25,19 +26,20 @@ export default function Navbar({selectedBlock}) {
   }
     
   const handleClickBookNow = async ()=> {
-      const response = await axios.get('documents/get/', {
-          headers: {
-              'Authorization': `Bearer ${authTokens.access}`,
-          }
-        });
+      // Выполняем GET запрос
+      const getResponse = await axios.get('get-bookings/', {
+        headers: {
+            'Authorization': `Bearer ${authTokens.access}`,
+        }
+    });
 
-      const userDocVerified = response.data[0].is_verified
-      console.log(userDocVerified);
+      setBookingIsHas(getResponse.data)
+      console.log(getResponse.data);
 
-      if(authTokens.user.is_doc_submitted == true && userDocVerified == true){
+      if(getResponse.data == ''){
           navigate('/booking')    
       }else{
-          navigate('/oops');
+          navigate('/my-booking');
       }
   }
 

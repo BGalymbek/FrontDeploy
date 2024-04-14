@@ -90,6 +90,8 @@ export default function MainPage() {
         fetchProfile();
     }, []);
 
+    console.log(userProfile.is_doc_submitted);
+
   return (
     <div className='main-page'>
         <Navbar/>
@@ -110,7 +112,6 @@ export default function MainPage() {
                         ):(
                            <button className="btn-submission" onClick={()=>navigate('/document-submission')}>Document Submission</button>
                         )}
-                        {/* <Link to="/document-submission"><button className="btn-submission">Document Submission</button></Link> */}
                     </div>
                 </div>
                 <div className="dorm-img">

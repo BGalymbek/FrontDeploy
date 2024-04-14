@@ -81,7 +81,7 @@ export default function UpdateSubmission() {
           <div className='status'>
             {userDocuments && userDocuments.length > 0 &&(
               userDocuments[0].is_verified == false ? (
-                <div className='status-doc-submission' style= {{backgroundColor: '#E94949' }}></div>
+                <div className='status-doc-submission' style= {{backgroundColor: '#F3A367' }}></div>
               ):(
                 <div className='status-doc-submission' style= {{backgroundColor: '#00A35D' }}></div>
               )
@@ -106,6 +106,10 @@ export default function UpdateSubmission() {
                       </div>
                       <p>statement</p>
                     </div>
+                  </>
+                 )}
+
+                 {userDocuments && userDocuments.length > 0 && (
                     <div className='custom-file-input update-file'>
                       <input 
                         type="file" id="state" name="state"
@@ -116,8 +120,7 @@ export default function UpdateSubmission() {
                       <img src={require('../img/update.png')} alt="logo"/>
                       <p>{statement ? statement.name : userDocuments[0].statement.substring(userDocuments[0].statement.lastIndexOf("/") + 1)}</p>
                     </div>
-                  </>
-                 )}
+                  )}
           </div>
           <div className='submitted-item'>
                 {userDocuments && userDocuments.length > 0 && (

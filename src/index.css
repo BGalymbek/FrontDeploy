@@ -1627,3 +1627,82 @@ src: url("./fonts/SF-Pro-Display-Medium.otf");
   font-family: "SF Pro Display";
   cursor: pointer;
 }
+
+/* Table */
+
+.my-booking{
+  background-color: #EAFAFF;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.my-booking-container{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+tbody{
+  width: calc(20%);
+  background-color: #EBF1FF;
+}
+
+.header-table{
+  background-color:#173F8F;
+  color: #fff;
+}
+
+.table th, .table td{
+  width: 20%;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #000;
+}
+
+.table-cost td:last-child{
+  font-family: 'SF Pro Display';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.71px;
+  text-align: center;
+  color: #173F8F;
+}
+
+/* Установка border-radius для нижних углов tbody */
+.table tbody {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* .header-table th:first-child{
+  border-radius: 8px 0 0 0;
+}
+
+.header-table th:last-child{
+  border-radius: 0 8px 0 0;
+} */
+
+.my-booking-container h1{
+  font-family: 'SF Pro Display';
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 57.28px;
+  color: #212153;
+  margin-bottom: 40px;
+}
+
+.my-booking-container h3{
+  font-family: 'SF Pro Display';
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28.64px;
+  color: #00A35D;
+  margin-bottom: 30px;
+}
