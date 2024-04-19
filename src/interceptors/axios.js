@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://13.49.18.134/api'
+axios.defaults.baseURL = 'http://13.49.18.134/api'
 
 axios.interceptors.response.use(resp=> resp, async error => {
     if(error.response.status === 401){
