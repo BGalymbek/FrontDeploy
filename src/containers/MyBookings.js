@@ -46,7 +46,6 @@ export default function MyBookings() {
                 }else if(num>=34 && num<=38){
                      setCorridorNum(4) 
                 }else{
-
                     setCorridorNum(1)
                 }
             }
